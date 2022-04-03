@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float button_timer = 0.3f;
 
     private float jump_force = 10.0f;
-    private float ground_distance = 0.4f;
+    private float ground_distance = 0.3f;
     private float jump_time = 0.0f;
 
     private bool is_grounded = false;
