@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private bool is_jumping = false;
     private bool is_jump_cancelled = false;
     private bool is_running = false;
+    private bool is_facing_right = true;
 
     private Rigidbody2D rb2D;
     [SerializeField] private Transform ground_check;
@@ -117,7 +118,6 @@ public class PlayerMovement : MonoBehaviour
         {
             is_running = false;
         }
-        Vector2 movement = new Vector2(horizontal_move, rb2D.velocity.y);
 
         if(!is_running)
         {
@@ -128,10 +128,26 @@ public class PlayerMovement : MonoBehaviour
             rb2D.drag = running_linear_drag;
         }
 
+        if (horizontal_move < 0 && is_facing_right)
+        {
+            Flip();
+        }
+        else if(horizontal_move > 0 && !is_facing_right)
+        {
+            Flip();
+        }
+
+        Vector2 movement = new Vector2(horizontal_move, rb2D.velocity.y);
         rb2D.velocity = movement;
         //Debug.Log(horizontal);
         //Debug.Log("Force: " + force.x);
         //Debug.Log("Velocity: " + rb2D.velocity.x);
+    }
+
+    private void Flip()
+    {
+        is_facing_right = !is_facing_right;
+        transform.Rotate(Vector3.up * 180f);
     }
 
     private void CancelJump()

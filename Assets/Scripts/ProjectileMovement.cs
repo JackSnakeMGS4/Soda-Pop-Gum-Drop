@@ -6,14 +6,16 @@ using UnityEngine;
 public class ProjectileMovement : MonoBehaviour
 {
     private float speed;
+    private Vector2 dir;
 
     private bool has_been_shot = false;
 
     private Rigidbody2D rb2D;
 
-    public void ProjectileSettings(float shot_speed)
+    public void ProjectileSettings(float shot_speed, Vector2 direction)
     {
         speed = shot_speed;
+        dir = direction;
     }
 
     // Start is called before the first frame update
@@ -35,10 +37,9 @@ public class ProjectileMovement : MonoBehaviour
 
     private void MoveProjectile()
     {
-        Vector2 force = new Vector2(speed, 0f);
         if (!has_been_shot)
         {
-            rb2D.AddForce(force, ForceMode2D.Impulse);
+            rb2D.AddForce(dir * speed, ForceMode2D.Impulse);
             has_been_shot = true;
         }
     }

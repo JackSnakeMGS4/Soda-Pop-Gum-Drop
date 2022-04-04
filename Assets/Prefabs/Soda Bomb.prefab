@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plaftorm_type: {fileID: 2129266383974040061, guid: 0798eb7a0bcf8a847874b655c77dcbae, type: 3}
   gravity_scale: 1
-  falling_gravity_scale: 7
+  falling_gravity_scale: 5
 --- !u!58 &7915122422421801066
 CircleCollider2D:
   m_ObjectHideFlags: 0

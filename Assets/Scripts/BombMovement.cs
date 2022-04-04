@@ -10,17 +10,19 @@ public class BombMovement : MonoBehaviour
     [SerializeField] private float falling_gravity_scale = 15.0f;
     private float strength;
     private float arch;
+    private Vector2 dir;
 
     private bool has_been_thrown = false;
 
     private Rigidbody2D rb2D;
     private PlayerCombat player;
 
-    public void BombSettings(float throw_strength, float throw_arch, GameObject platform_type = null, PlayerCombat player = null)
+    public void BombSettings(float throw_strength, float throw_arch, Vector2 direction, GameObject platform_type = null, PlayerCombat player = null)
     {
         strength = throw_strength;
         arch = throw_arch;
         this.player = player;
+        dir = direction;
     }
 
     // Start is called before the first frame update
@@ -42,7 +44,7 @@ public class BombMovement : MonoBehaviour
 
     public void MoveBomb()
     {
-        Vector2 force = new Vector2(strength, arch);
+        Vector2 force = new Vector2(dir.x * strength, dir.y * arch);
         if (!has_been_thrown)
         {
             rb2D.AddForce(force, ForceMode2D.Impulse);

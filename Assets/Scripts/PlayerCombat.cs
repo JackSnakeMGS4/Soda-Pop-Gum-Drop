@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
-    [SerializeField] private float aim_speed = 2.0f;
-    [SerializeField] private GameObject current_platform_type;
-
     [Header("Bomb Settings")]
     [SerializeField] private float throw_strength = 1.0f;
     [SerializeField] private float throw_arch = 1.0f;
@@ -15,10 +12,12 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float max_throw_arch = 20.0f;
     [SerializeField] private float charge_rate = 1.0f;
     [SerializeField] private float button_timer = 0.3f;
+    [SerializeField] private float throw_cooldown = 2.0f;
+    [SerializeField] private List<GameObject> platform_types;
     private float total_throw_strength = 0f;
     private float total_throw_arch = 0f;
     private float charge_time = 0f;
-
+    private float throw_timer = 0f;
     private bool is_charging_throw = false;
 
     [Header("Projectile Settings")]
@@ -27,38 +26,40 @@ public class PlayerCombat : MonoBehaviour
     private int gum_drops_left;
 
     [Header("Assets Used")]
-    [SerializeField] private GameObject platform_bomb;
+    [SerializeField] private GameObject platform_can;
     [SerializeField] private GameObject projectile;
-    [SerializeField] private Transform bomb_spawn;
+    [SerializeField] private Transform throw_spawn;
     [SerializeField] private Transform projectile_spawn;
     private List<GameObject> gum_platforms;
     private PlayerCombat player_combat_script;
+    private GameObject current_platform_type;
 
     // Start is called before the first frame update
     void Start()
     {
         gum_platforms = new List<GameObject>();
-        gum_drops_left = max_gum_drops;
         player_combat_script = gameObject.GetComponent<PlayerCombat>();
+        current_platform_type = platform_types[0];
+        gum_drops_left = max_gum_drops;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //TODO: Cycle through platforms types and pass currently select type to HandleBomb();
         HandleBomb();
         HandleGumDrop();
         HandlePlatformReload();
-        //HandleAiming();
     }
+
     private void HandleBomb()
     {
-        if (Input.GetButtonDown("Fire1") && !is_charging_throw)
+        if (Input.GetButtonDown("Fire1") && !is_charging_throw && throw_timer >= throw_cooldown)
         {
             is_charging_throw = true;
             charge_time = 0f;
             total_throw_strength = throw_strength;
             total_throw_arch = throw_arch;
+            throw_timer = 0f;
         }
 
         if (is_charging_throw)
@@ -67,9 +68,11 @@ public class PlayerCombat : MonoBehaviour
             if (Input.GetButtonUp("Fire1") || charge_time > button_timer)
             {
                 //Debug.Log("Throwing Soda Can");
-                GameObject bomb = Instantiate(platform_bomb, bomb_spawn.position, bomb_spawn.rotation);
+                GameObject bomb = Instantiate(platform_can, throw_spawn.position, throw_spawn.rotation);
                 BombMovement script = bomb.GetComponent<BombMovement>();
-                script.BombSettings(total_throw_strength, total_throw_arch, null, player_combat_script);
+                Vector3 dir = throw_spawn.position - transform.position;
+                dir = dir.normalized;
+                script.BombSettings(total_throw_strength, total_throw_arch, dir, current_platform_type, player_combat_script);
 
                 is_charging_throw = false;
             }
@@ -86,6 +89,10 @@ public class PlayerCombat : MonoBehaviour
             }
         }
 
+        if (!is_charging_throw)
+        {
+            throw_timer += Time.deltaTime;
+        }
         //Debug.Log("Throw values: " + total_throw_strength + "STR; " + total_throw_arch + "ARCH");
     }
 
@@ -96,7 +103,9 @@ public class PlayerCombat : MonoBehaviour
             //Debug.Log("Shooting Gum Drop");
             GameObject shot = Instantiate(projectile, projectile_spawn.position, projectile_spawn.rotation);
             ProjectileMovement script = shot.GetComponent<ProjectileMovement>();
-            script.ProjectileSettings(shot_speed);
+            Vector3 dir = projectile_spawn.position - transform.position;
+            dir = dir.normalized;
+            script.ProjectileSettings(shot_speed, dir);
             gum_drops_left--;
         }
     }
@@ -129,21 +138,8 @@ public class PlayerCombat : MonoBehaviour
                 gum_drops_left = max_gum_drops;
             }
 
-            Debug.Log("Total platforms: " + gum_platforms.Count);
+            //Debug.Log("Total platforms: " + gum_platforms.Count);
         }
-    }
-
-    private void HandleAiming()
-    {
-        float x = Input.GetAxisRaw("Mouse X");
-        float y = Input.GetAxisRaw("Mouse Y");
-
-        Vector3 z = new Vector3(0, 0, aim_speed);
-
-        bomb_spawn.RotateAround(gameObject.transform.position, z, 20f * Time.deltaTime);
-
-        //Debug.Log("Mouse X: " + x);
-        //Debug.Log("Mouse Y: " + y);
     }
 
     public void AddToPlatformsList(GameObject platform = null)
@@ -153,7 +149,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(gameObject.transform.position, bomb_spawn.position);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawLine(gameObject.transform.position, bomb_spawn.position);
     }
 }
