@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{0f0b2eb7-1cc4-4e62-a049-32b36bef0c0e}">
+		<property name="assetPath">
+			<value>Laser2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0.23369614512471656</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{171b4090-ff73-4346-a05f-a375551f8230}</destination>
+		</relationship>
+	</object>
+</objects>

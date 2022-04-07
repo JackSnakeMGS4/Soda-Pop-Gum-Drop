@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{da22a992-daef-4013-8cd3-32a5c4b8973f}">
+		<property name="assetPath">
+			<value>Gum Funk_master.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>40.549115646258507</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{171b4090-ff73-4346-a05f-a375551f8230}</destination>
+		</relationship>
+	</object>
+</objects>

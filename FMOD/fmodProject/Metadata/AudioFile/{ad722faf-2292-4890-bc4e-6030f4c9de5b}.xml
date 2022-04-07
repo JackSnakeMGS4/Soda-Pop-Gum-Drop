@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{ad722faf-2292-4890-bc4e-6030f4c9de5b}">
+		<property name="assetPath">
+			<value>oceanwave4.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>2.8647165532879817</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{171b4090-ff73-4346-a05f-a375551f8230}</destination>
+		</relationship>
+	</object>
+</objects>

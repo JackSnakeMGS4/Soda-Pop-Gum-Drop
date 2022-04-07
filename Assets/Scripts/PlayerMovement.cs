@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -28,21 +29,36 @@ public class PlayerMovement : MonoBehaviour
     private bool is_jump_cancelled = false;
     private bool is_running = false;
     private bool is_facing_right = true;
+    private bool can_move = false;
 
     private Rigidbody2D rb2D;
     [SerializeField] private Transform ground_check;
     [SerializeField] private LayerMask ground_mask;
+    [SerializeField] private Transform respawn_point;
     private Vector2 vel;
+
+    public bool _Can_Move
+    {
+        get { return can_move; }
+        set { can_move = value; }
+    }
+
+    [EventRef] public string jump_event = "";
+    [EventRef] public string death_event = "";
 
     // Start is called before the first frame update
     void Start()
     {
         rb2D = gameObject.GetComponent<Rigidbody2D>();
+        can_move = true;
     }
 
     private void Update()
     {
-        Jump();
+        if (can_move)
+        {
+            Jump();
+        }
     }
 
     private void Jump()
@@ -52,6 +68,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && is_grounded)
         {
+            RuntimeManager.PlayOneShot(jump_event, transform.position);
+
             if(is_running && (rb2D.velocity.x > 0 || rb2D.velocity.x < 0))
             {
                 jump_force = Mathf.Sqrt(running_jump_height * -2 * (Physics2D.gravity.y * rb2D.gravityScale));
@@ -101,8 +119,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
-        CancelJump();
+        if(can_move)
+        {
+            Move();
+            CancelJump();
+        }
+        else
+        {
+            rb2D.drag = 3f;
+        }
     }
 
     //Polish running jump???
@@ -156,6 +181,22 @@ public class PlayerMovement : MonoBehaviour
         {
             rb2D.AddForce(Vector2.down * cancel_rate);
         }
+    }
+
+    public void Respawn()
+    {
+        SpriteRenderer spr = GetComponentInChildren<SpriteRenderer>();
+        RuntimeManager.PlayOneShot(death_event, transform.position);
+        spr.enabled = false;
+
+        transform.position = respawn_point.position;
+
+        spr.enabled = true;
+    }
+
+    public void ChangeSpawnPoint(Transform spawn_point)
+    {
+        respawn_point = spawn_point;
     }
 
     private void OnDrawGizmos()
