@@ -73,6 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d841d99a5f36dd4cabf016e3d3bf3ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkpoint_event: event:/checkpoint
 --- !u!1 &144527044904949872
 GameObject:
   m_ObjectHideFlags: 0

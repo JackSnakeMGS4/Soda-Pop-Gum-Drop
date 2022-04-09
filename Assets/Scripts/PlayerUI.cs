@@ -7,7 +7,7 @@ using TMPro;
 public class PlayerUI : MonoBehaviour
 {
     [SerializeField] private GameObject player;
-    [SerializeField] private TMP_Text keys_text;
+    [SerializeField] private TMP_Text sodas_text;
     [SerializeField] private TMP_Text ammo_text;
     [SerializeField] private TMP_Text platforms_text;
 
@@ -22,7 +22,8 @@ public class PlayerUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ammo_text.SetText("Gumdrops: " + p_combat._Gum_Drops + " / " + p_combat._Max_Gum_Drops);
-        platforms_text.SetText("Platforms: " + p_combat._Gum_Platforms + " / " + p_combat._Max_Gum_Drops);
+        sodas_text.SetText("" + p_combat._Sodas_Used);
+        ammo_text.SetText("" + p_combat._Gum_Drops);
+        platforms_text.SetText("" + p_combat._Gum_Platforms);
     }
 }

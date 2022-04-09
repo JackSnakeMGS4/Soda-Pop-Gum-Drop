@@ -53,7 +53,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1194840424257134443, guid: ffe58508dd0d0204ab3cd7b5f382bd74, type: 3}
       propertyPath: m_Name
-      value: falling_spike 1
+      value: falling_spike
+      objectReference: {fileID: 0}
+    - target: {fileID: 1194840424407320379, guid: ffe58508dd0d0204ab3cd7b5f382bd74, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffe58508dd0d0204ab3cd7b5f382bd74, type: 3}

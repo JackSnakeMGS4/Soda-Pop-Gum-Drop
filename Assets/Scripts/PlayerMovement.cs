@@ -36,11 +36,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask ground_mask;
     [SerializeField] private Transform respawn_point;
     private Vector2 vel;
+    private Animator animator;
 
     public bool _Can_Move
     {
         get { return can_move; }
         set { can_move = value; }
+    }
+
+    public Transform _Respawn_Point
+    {
+        get { return respawn_point; }
     }
 
     [EventRef] public string jump_event = "";
@@ -50,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb2D = gameObject.GetComponent<Rigidbody2D>();
+        animator = gameObject.GetComponent<Animator>();
         can_move = true;
     }
 
@@ -83,6 +90,8 @@ public class PlayerMovement : MonoBehaviour
             is_jumping = true;
             is_jump_cancelled = false;
             jump_time = 0f;
+
+            //animator.SetBool("has_jumped", true);
         }
 
         ////Change jump height based on input
@@ -115,6 +124,8 @@ public class PlayerMovement : MonoBehaviour
         {
             rb2D.gravityScale = falling_gravity_scale;
         }
+
+        animator.SetBool("has_jumped", !is_grounded);
     }
 
     private void FixedUpdate()
@@ -134,6 +145,7 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         float horizontal_move = Input.GetAxisRaw("Horizontal") * move_spd;
+
         if (Input.GetButton("Run"))
         {
             horizontal_move *= run_mod;
@@ -143,8 +155,9 @@ public class PlayerMovement : MonoBehaviour
         {
             is_running = false;
         }
+        animator.SetFloat("speed", Mathf.Abs(horizontal_move));
 
-        if(!is_running)
+        if (!is_running)
         {
             rb2D.drag = linear_drag;
         }

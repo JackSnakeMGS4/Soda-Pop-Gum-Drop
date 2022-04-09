@@ -20,6 +20,11 @@ public class PlayerCombat : MonoBehaviour
     private float charge_time = 0f;
     private float throw_timer = 0f;
     private bool is_charging_throw = false;
+    private int sodas_thrown;
+    public int _Sodas_Used
+    {
+        get { return sodas_thrown; }
+    }
 
     [Header("Projectile Settings")]
     [SerializeField] private float shot_speed = 1.0f;
@@ -55,8 +60,11 @@ public class PlayerCombat : MonoBehaviour
     [EventRef] public string platform_set_event = "";
     [EventRef] public string throw_event = "";
 
+    private Animator animator;
+
     void Start()
     {
+        animator = gameObject.GetComponent<Animator>();
         gum_platforms = new List<GameObject>();
         player_combat_script = gameObject.GetComponent<PlayerCombat>();
         player_movement_script = gameObject.GetComponent<PlayerMovement>();
@@ -99,6 +107,7 @@ public class PlayerCombat : MonoBehaviour
                 dir = dir.normalized;
                 script.BombSettings(total_throw_strength, total_throw_arch, dir, current_platform_type, player_combat_script);
 
+                sodas_thrown++;
                 is_charging_throw = false;
             }
             else

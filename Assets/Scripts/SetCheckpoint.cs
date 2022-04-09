@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class SetCheckpoint : MonoBehaviour
 {
+    [EventRef] public string checkpoint_event;
+
     private ParticleSystem particle_system;
 
     private void Start()
@@ -15,10 +18,14 @@ public class SetCheckpoint : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            particle_system.Play();
-
             PlayerMovement player = collision.GetComponent<PlayerMovement>();
-            player.ChangeSpawnPoint(transform);
+
+            if (player._Respawn_Point != transform)
+            {
+                RuntimeManager.PlayOneShot(checkpoint_event, transform.position);
+                particle_system.Play();
+                player.ChangeSpawnPoint(transform);
+            }
         }
     }
 }
