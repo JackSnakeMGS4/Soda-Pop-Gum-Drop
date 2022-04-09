@@ -7,6 +7,11 @@ TagManager:
   - Gum Drop
   - Platform
   - Key
+  - cam1
+  - cam2
+  - cam3
+  - cam4
+  - cam5
   layers:
   - Default
   - TransparentFX

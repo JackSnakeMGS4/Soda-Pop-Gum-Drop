@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3791834934644654769}
   - component: {fileID: -1283792731438113931}
   - component: {fileID: -8068337551702668586}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Basic Platform
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4438845509176142957}
   - component: {fileID: 7494813245918008088}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 6
   m_Sprite: {fileID: 532111485, guid: aff5c3f603e28524aad3348243f8ae91, type: 3}
-  m_Color: {r: 0.9339623, g: 0.7885814, b: 0.8951114, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -167,7 +167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1571157325782565494}
   - component: {fileID: 337653658833657331}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 6
   m_Sprite: {fileID: 967247239, guid: aff5c3f603e28524aad3348243f8ae91, type: 3}
-  m_Color: {r: 0.9339623, g: 0.7885814, b: 0.8951114, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
