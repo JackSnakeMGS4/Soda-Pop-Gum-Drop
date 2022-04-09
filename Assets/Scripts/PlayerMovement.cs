@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb2D;
     [SerializeField] private Transform ground_check;
     [SerializeField] private LayerMask ground_mask;
-    [SerializeField] private Transform respawn_point;
+    private Transform respawn_point;
     private Vector2 vel;
     private Animator animator;
 
