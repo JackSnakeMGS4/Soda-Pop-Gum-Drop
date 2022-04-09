@@ -7855,7 +7855,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 6, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -7866,7 +7866,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 8}
+  m_Size: {x: 16, y: 6}
   m_EdgeRadius: 0
 --- !u!114 &1461406085
 MonoBehaviour:
@@ -18227,6 +18227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game_complete_cam: {fileID: 655388290}
   audio_manager: {fileID: 743834368}
+  win_event: event:/level_complete
 --- !u!1 &1952950500
 GameObject:
   m_ObjectHideFlags: 0
@@ -20133,17 +20134,9 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5995153494762312493, guid: 821b345cfbf3b7242bb497db5b37756e, type: 3}
-      propertyPath: run_mod
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5995153494762312493, guid: 821b345cfbf3b7242bb497db5b37756e, type: 3}
       propertyPath: respawn_point
       value: 
       objectReference: {fileID: 43582131}
-    - target: {fileID: 5995153494762312493, guid: 821b345cfbf3b7242bb497db5b37756e, type: 3}
-      propertyPath: ground_mask.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 821b345cfbf3b7242bb497db5b37756e, type: 3}
 --- !u!1 &5995153493458354984 stripped

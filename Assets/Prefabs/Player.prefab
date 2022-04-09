@@ -289,7 +289,7 @@ MonoBehaviour:
   ground_check: {fileID: 5995153493652985044}
   ground_mask:
     serializedVersion: 2
-    m_Bits: 63
+    m_Bits: 8
   respawn_point: {fileID: 0}
   jump_event: event:/jump
   death_event: event:/death

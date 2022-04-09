@@ -37,11 +37,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: D:/Unity3D Games/Soda Pop Gum Drop/FMOD/fmodProject/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637848687659782506
+  lastModified: 637850723870238587
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 1062
+    Value: 1154
   Exists: 1
 --- !u!114 &-6364957854286090690
 MonoBehaviour:
@@ -89,6 +89,52 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 150
+--- !u!114 &-3826701943550812849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/level_complete
+  m_EditorClassIdentifier: 
+  Path: event:/level_complete
+  guid: d3f47a0cfccc8e41bb7f9c5e186348a1
+  Banks:
+  - {fileID: 2133354927830271783}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 9230
+--- !u!114 &-420818911673066860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/checkpoint
+  m_EditorClassIdentifier: 
+  Path: event:/checkpoint
+  guid: 57cd424788be514f83a991f040935faf
+  Banks:
+  - {fileID: 2133354927830271783}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 682
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,12 +159,14 @@ MonoBehaviour:
   - {fileID: -4781301074947544486}
   - {fileID: 5958403708474784378}
   - {fileID: 5359940324085421092}
+  - {fileID: -420818911673066860}
+  - {fileID: -3826701943550812849}
   EditorParameters: []
   MasterBanks:
   - {fileID: 2133354927830271783}
   StringsBanks:
   - {fileID: -7587698192911935879}
-  stringsBankWriteTime: 637848687659782506
+  stringsBankWriteTime: 637850723870238587
   cacheVersion: 3
 --- !u!114 &2133354927830271783
 MonoBehaviour:
@@ -134,11 +182,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: D:/Unity3D Games/Soda Pop Gum Drop/FMOD/fmodProject/Build/Desktop/Master.bank
   SubDir: 
-  lastModified: 637848687659772554
+  lastModified: 637850723870228343
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 536352
+    Value: 652480
   Exists: 1
 --- !u!114 &4664314696081689536
 MonoBehaviour:
